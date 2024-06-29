@@ -9,3 +9,10 @@
 
 # Undo-tree save-files
 *.~undo-tree
+.dap-breakpoints
+.lsp-session-v1
+auto-save-list/
+elpa/
+recentf
+*~
+.DS_Store
