@@ -23,13 +23,13 @@
   ;; highlight current line
   (global-hl-line-mode t)
   ;; set default font / size
-  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 130)
+  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
   ;; set color
   ;; (load-theme 'zenburn)
   ;;  (load-theme 'modus-operandi)
   (load-theme 'doom-nord)
   ;; set initial geometry
-  (add-to-list 'default-frame-alist '(height . 120))
+  (add-to-list 'default-frame-alist '(height . 114))
   (add-to-list 'default-frame-alist '(width . 250))
   ;; (add-to-list 'default-frame-alist '(width . 140))
   (add-to-list 'default-frame-alist '(top . 0))
@@ -37,8 +37,13 @@
   ;; avoid making backup files - we do have git!
   (setq make-backup-files nil)
   (setq gc-cons-threshold (* 100 1024 1024)
-	read-process-output-max (* 1024 1024)
-	create-lockfiles nil) ;; lock files will kill `npm start'
+		read-process-output-max (* 1024 1024)
+		create-lockfiles nil) ;; lock files will kill `npm start'
+  ;; make return key also do indent, globally
+  (electric-indent-mode 1)
+  ;; make tab key do indent first then completion.
+  (setq-default tab-always-indent 'complete)
+  (setq-default tab-width 4)
   (setq-default js-indent-level 2)  
   :config
   ;; use y-or-n instead yes-or-not
