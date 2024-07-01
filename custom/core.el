@@ -36,14 +36,15 @@
   (add-to-list 'default-frame-alist '(left . 1814))
   ;; avoid making backup files - we do have git!
   (setq make-backup-files nil)
-  (setq gc-cons-threshold (* 100 1024 1024)
+  (setq gc-cons-threshold (* 1000 1024 1024)
 		read-process-output-max (* 1024 1024)
 		create-lockfiles nil) ;; lock files will kill `npm start'
   ;; make return key also do indent, globally
   (electric-indent-mode 1)
   ;; make tab key do indent first then completion.
   (setq-default tab-always-indent 'complete)
-  (setq-default tab-width 4)
+  (setq-default tab-width 2)
+  (setq-default indent-tabs-mode nil)
   (setq-default js-indent-level 2)  
   :config
   ;; use y-or-n instead yes-or-not
