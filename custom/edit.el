@@ -62,7 +62,8 @@
           "--no-semi" 
           "--single-quote" 
           "--jsx-single-quote" 
-          "--trailing-coma" "<none>"
+          "--trailing-comma" "es5"
+          ;; "--trailing-coma" "<none>"
           "--no-bracket-spasing" 
 
           ))

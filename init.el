@@ -32,5 +32,7 @@
 ;; (require 'lng-web)
 ;; (require 'lng-syst)
 
+(require 'lngs)
+
 (provide 'init)
 ;;; init.el ends here
