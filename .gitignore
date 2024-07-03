@@ -15,5 +15,6 @@ auto-save-list/
 elpa/
 recentf
 .cache/
+transient/
 *~
 .DS_Store
