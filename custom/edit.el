@@ -33,6 +33,7 @@
 
 (use-package company
   :ensure t
+  :hook (prog-mode . company-mode)
   :config
   (setq	company-idle-delay 0.0
 	      company-minimum-prefix-length 1))
