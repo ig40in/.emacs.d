@@ -14,7 +14,7 @@
    '("34cf3305b35e3a8132a0b1bdf2c67623bc2cb05b125f8d7d26bd51fd16d547ec" default))
  '(org-agenda-files '("~/org/mylife.org"))
  '(package-selected-packages
-   '(add-node-modules-path exec-path-from-shell rjsx-mode prettier-js flycheck company paredit helm-xref helm which-key avy hydra yasnippet projectile winum doom-themes)))
+   '(multi-vterm vterm add-node-modules-path exec-path-from-shell rjsx-mode prettier-js flycheck company paredit helm-xref helm which-key avy hydra yasnippet projectile winum doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -61,6 +61,12 @@
   :init
   (exec-path-from-shell-initialize))
 
+;; vterm & multi-vterm
+(use-package vterm
+  :ensure t)
+
+(use-package multi-vterm
+  :ensure t)
 
 ;; winum package
 (use-package winum
