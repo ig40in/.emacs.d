@@ -40,7 +40,9 @@
 
 (use-package flycheck
   :ensure t
-  :config (global-flycheck-mode))
+  :config
+  (add-to-list 'flycheck-checkers 'javascript-eslint)
+  (global-flycheck-mode))
 
 ;; (use-package apheleia
 ;;   :ensure t
@@ -63,9 +65,9 @@
           "--no-semi" 
           "--single-quote" 
           "--jsx-single-quote" 
-          "--trailing-comma" "es5"
-          ;; "--trailing-coma" "<none>"
-          "--no-bracket-spasing" 
+          ;; "--trailing-comma" "es5"
+          "--trailing-comma" "none"
+          ;; "--no-bracket-spasing" 
 
           ))
   :hook

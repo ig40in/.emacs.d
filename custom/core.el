@@ -52,6 +52,16 @@
   :hook
   (prog-mode . display-line-numbers-mode))
 
+;; normally the PATH in nixos contains everything we'd like (e.g. rg, direnv),
+;; but on mac that's not true, so load the PATH that the shell would have and
+;; rely on bash/zsh/fishrc
+(use-package exec-path-from-shell
+  :ensure t
+  ;; :if is-mac
+  :init
+  (exec-path-from-shell-initialize))
+
+
 ;; winum package
 (use-package winum
   :ensure t
