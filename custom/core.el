@@ -68,6 +68,9 @@
 (use-package multi-vterm
   :ensure t)
 
+(use-package magit
+  :ensure t)
+
 ;; winum package
 (use-package winum
   :ensure t
