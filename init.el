@@ -14,7 +14,7 @@
    '("34cf3305b35e3a8132a0b1bdf2c67623bc2cb05b125f8d7d26bd51fd16d547ec" default))
  '(org-agenda-files '("~/org/mylife.org"))
  '(package-selected-packages
-   '(magit smartparens multi-vterm vterm add-node-modules-path exec-path-from-shell rjsx-mode prettier-js flycheck company helm-xref helm which-key avy hydra yasnippet projectile winum doom-themes)))
+   '(geiser-guile geiser web-mode smartparens magit multi-vterm vterm add-node-modules-path exec-path-from-shell prettier-js flycheck company helm-xref helm which-key avy hydra yasnippet projectile winum doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,12 +28,13 @@
 (require 'edit)
 (require 'sm-parens)
 (require 'orgm)
+(require 'prog)
 ;; (require 'lsp-n-dap)
 ;; (require 'lng-lisp)
 ;; (require 'lng-web)
 ;; (require 'lng-syst)
 
-(require 'lngs)
+;; (require 'lngs)
 
 (provide 'init)
 ;;; init.el ends here

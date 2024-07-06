@@ -40,11 +40,11 @@
   (setq	company-idle-delay 0.0
 	      company-minimum-prefix-length 1))
 
-(use-package flycheck
-  :ensure t
-  :config
-  (add-to-list 'flycheck-checkers 'javascript-eslint)
-  (global-flycheck-mode))
+;; (use-package flycheck
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'flycheck-checkers 'javascript-eslint)
+;;   (global-flycheck-mode))
 
 ;; (use-package apheleia
 ;;   :ensure t
@@ -59,23 +59,23 @@
 ;;           ))
 ;;   :hook (prog-mode . apheleia-mode))
 
-(use-package prettier-js
-  :ensure t
-  :config
-  (setq prettier-js-args
-        '(
-          "--no-semi" 
-          "--single-quote" 
-          "--jsx-single-quote" 
-          ;; "--trailing-comma" "es5"
-          "--trailing-comma" "none"
-          ;; "--no-bracket-spasing" 
+;; (use-package prettier-js
+;;   :ensure t
+;;   :config
+;;   (setq prettier-js-args
+;;         '(
+;;           "--no-semi" 
+;;           "--single-quote" 
+;;           "--jsx-single-quote" 
+;;           ;; "--trailing-comma" "es5"
+;;           "--trailing-comma" "none"
+;;           ;; "--no-bracket-spasing" 
 
-          ))
-  :hook
-  (js-mode . prettier-js-mode)
-  (web-mode . prettier-js-mode)
-  )
+;;           ))
+;;   :hook
+;;   (js-mode . prettier-js-mode)
+;;   (web-mode . prettier-js-mode)
+;;   )
 
 (provide 'edit)
 ;; edit.el ends here

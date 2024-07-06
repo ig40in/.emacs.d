@@ -19,7 +19,7 @@
 
 (defalias 'kill-current-word
      (kmacro "M-b C-SPC M-f C-w"))
-(global-set-key (kbd "M-<delete>")   'kill-current-word)
+(global-set-key (kbd "M-<f8>")   'kill-current-word)
 
 (defalias 'ig40in-dev-layout
   (kmacro "C-x 2 C-2 C-0 C-x ^ M-o M-x m u l t <tab> v <tab> <return> M-o C-x 3"))
