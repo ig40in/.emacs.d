@@ -36,6 +36,7 @@
   (add-to-list 'default-frame-alist '(left . 1814))
   ;; avoid making backup files - we do have git!
   (setq make-backup-files nil)
+  (setq create-lockfiles nil)
   (setq gc-cons-threshold (* 1000 1024 1024)
 		    read-process-output-max (* 1024 1024)
 		    create-lockfiles nil) ;; lock files will kill `npm start'
