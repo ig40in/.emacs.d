@@ -3,6 +3,9 @@
 (use-package doom-themes
   :ensure t)
 
+(use-package zenburn-theme
+  :ensure t)
+
 (use-package emacs
   :ensure nil
   :init
@@ -23,17 +26,26 @@
   ;; highlight current line
   (global-hl-line-mode t)
   ;; set default font / size
-  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
-  ;; set color
-  ;; (load-theme 'zenburn)
-  ;;  (load-theme 'modus-operandi)
-  (load-theme 'doom-nord)
-  ;; set initial geometry
-  (add-to-list 'default-frame-alist '(height . 114))
-  (add-to-list 'default-frame-alist '(width . 250))
-  ;; (add-to-list 'default-frame-alist '(width . 140))
-  (add-to-list 'default-frame-alist '(top . 0))
-  (add-to-list 'default-frame-alist '(left . 1814))
+  ;; (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
+  (set-face-attribute 'default nil :font "Robotomono Nerd Font Mono" :height 140)
+  ;; ;; set color
+  (load-theme 'zenburn)
+  ;; ;;  (load-theme 'modus-operandi)
+  ;; (load-theme 'doom-nord)
+  ;; ;; set initial geometry
+  ;; (add-to-list 'default-frame-alist '(height . 114))
+  ;; (add-to-list 'default-frame-alist '(width . 250))
+  ;; ;; (add-to-list 'default-frame-alist '(width . 140))
+  ;; (add-to-list 'default-frame-alist '(top . 0))
+  ;; (add-to-list 'default-frame-alist '(left . 1814))
+
+  (setq default-frame-alist
+        (append (list '(height . 108) '(width . 250)
+                      '(top . 0) '(left . 1814)
+                      '(vertical-scroll-bar . nil)
+                      ;; '(font . "RobotoMono Need Font 14")
+                      )))
+  
   ;; avoid making backup files - we do have git!
   (setq make-backup-files nil)
   (setq create-lockfiles nil)

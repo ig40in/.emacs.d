@@ -17,4 +17,5 @@ recentf
 .cache/
 transient/
 *~
+.org-id-locations
 .DS_Store
