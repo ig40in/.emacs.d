@@ -53,7 +53,7 @@
 
 (use-package js-mode
   :ensure nil
-  :mode "\\.[c|m]js[x]\\'"
+  :mode "\\.[mc]?js[x]?\\'"
   ;; :hook
   ;; (js-mode . lsp-deferred)
   ;; (js-mode . dtrt-indent-mode)
@@ -63,7 +63,7 @@
 
 ;; (use-package rjsx-mode
 ;;   :ensure t
-;;   :mode "\\.[mc]?js[x]\\'"
+;;   :mode "\\.[mc]?js[x]?\\'"
 ;;   :mode "\\.es6\\'"
 ;;   :config
 ;;   (setq js-chain-indent t
@@ -144,6 +144,7 @@
 
 ;;; === JSON ===
 (use-package json-mode
+  :ensure t
   :mode "\\.json\\'"
   ;; :hook
   ;; (json-mode . lsp-deferred)
