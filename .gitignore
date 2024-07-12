@@ -16,6 +16,7 @@ elpa/
 recentf
 .cache/
 transient/
+tree-sitter/
 *~
 .org-id-locations
 .DS_Store

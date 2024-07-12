@@ -4,6 +4,80 @@
 ;; related stuff, i.e. "make programming work"
 ;;; Code:
 
+;;; === Tree-Sitter ===
+;; `M-x combobulate' (default: `C-c o o') to start using Combobulate
+(use-package treesit
+  :mode (("\\.tsx\\'" . tsx-ts-mode))
+  :preface
+  (defun mp-setup-install-grammars ()
+    "Install Tree-sitter grammars if they are absent."
+    (interactive)
+    (dolist (grammar
+              '((css . ("https://github.com/tree-sitter/tree-sitter-css" "v0.20.0"))
+                (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
+                (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
+                (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
+                (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
+                (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
+                (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
+                (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
+                (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))))
+      (add-to-list 'treesit-language-source-alist grammar)
+      ;; Only install `grammar' if we don't already have it
+      ;; installed. However, if you want to *update* a grammar then
+      ;; this obviously prevents that from happening.
+      (unless (treesit-language-available-p (car grammar))
+        (treesit-install-language-grammar (car grammar)))))
+
+  ;; Optional, but recommended. Tree-sitter enabled major modes are
+  ;; distinct from their ordinary counterparts.
+  ;;
+  ;; You can remap major modes with `major-mode-remap-alist'. Note
+  ;; that this does *not* extend to hooks! Make sure you migrate them
+  ;; also
+  (dolist (mapping
+           '(
+             (css-mode . css-ts-mode)
+             (html-mode . html-ts-mode)
+             (json-mode . json-ts-mode)
+             (javascript-mode . javascript-ts-mode)
+             ;; (js-mode . javascript-ts-mode)
+             (typescript-mode . typescript-ts-mode)
+             (tsx-mode . tsx-ts-mode)
+             (python-mode . python-ts-mode)
+             (toml-mode . toml-ts-mode)
+             (yaml-mode . yaml-ts-mode)
+           ))
+    (add-to-list 'major-mode-remap-alist mapping))
+  :config
+  (mp-setup-install-grammars)
+  ;; Do not forget to customize Combobulate to your liking:
+  ;;
+  ;;  M-x customize-group RET combobulate RET
+  ;;
+  (use-package combobulate
+    :preface
+    ;; You can customize Combobulate's key prefix here.
+    ;; Note that you may have to restart Emacs for this to take effect!
+    (setq combobulate-key-prefix "C-c o")
+
+    ;; Optional, but recommended.
+    ;;
+    ;; You can manually enable Combobulate with `M-x
+    ;; combobulate-mode'.
+    :hook
+      ((python-ts-mode . combobulate-mode)
+       (js-ts-mode . combobulate-mode)
+       (html-ts-mode . combobulate-mode)
+       (css-ts-mode . combobulate-mode)
+       (yaml-ts-mode . combobulate-mode)
+       (typescript-ts-mode . combobulate-mode)
+       (json-ts-mode . combobulate-mode)
+       (tsx-ts-mode . combobulate-mode))
+    ;; Amend this to the directory where you keep Combobulate's source
+    ;; code.
+      :load-path ("path-to-git-checkout-of-combobulate")))
+
 ;;; === LSP ===
 (use-package eglot
   :config
@@ -54,7 +128,8 @@
 (use-package js-mode
   :ensure nil
   :mode "\\.[mc]?js[x]?\\'"
-  ;; :hook
+  :hook
+  (js-mode . javascript-ts-mode)
   ;; (js-mode . lsp-deferred)
   ;; (js-mode . dtrt-indent-mode)
   ;; (after-save . daut/js-standard-fix-file)
@@ -181,21 +256,7 @@
   ;;   (setq geiser-guile-binary "guile3")))
   )
 
-(use-package treesit
-  :ensure nil
-  :config
-  (setq treesit-language-source-alist
-        '((astro "https://github.com/virchau13/tree-sitter-astro")
-          (bash "https://github.com/tree-sitter/tree-sitter-bash")
-          (css "https://github.com/tree-sitter/tree-sitter-css")
-          (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-          (go "https://github.com/tree-sitter/tree-sitter-go")
-          (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-          (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-          (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-          (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-          (vue "https://github.com/ikatyang/tree-sitter-vue")))
-  (setq treesit-font-lock-level 4))
+
 
 
 (provide 'prog)
