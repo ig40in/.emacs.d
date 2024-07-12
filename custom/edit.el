@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; edit.el --- "general" editing enchacements -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (use-package projectile
   :ensure t)
@@ -40,42 +42,15 @@
   (setq	company-idle-delay 0.0
 	      company-minimum-prefix-length 1))
 
-;; (use-package flycheck
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'flycheck-checkers 'javascript-eslint)
-;;   (global-flycheck-mode))
+(use-package flyspell
+  :ensure t
+  :when (or (executable-find "ispell")
+            (executable-find "aspell")
+            (executable-find "hunspell"))
+  :hook ((org-mode git-commit-mode markdown-mode) . flyspell-mode))
 
-;; (use-package apheleia
-;;   :ensure t
-;;   :config
-;;   (setf (alist-get 'prettier-javascript apheleia-formatters)
-;;         `(,(alist-get 'prettier-javascript apheleia-formatters)
-;;           "-semi" "true"
-;;           "--single-quote" "true"
-;;           "--jsx-single-quote" "true"
-;;           "--trailing-coma" "none"
-;;           "--no-bracket-spasing" "false"
-;;           ))
-;;   :hook (prog-mode . apheleia-mode))
 
-;; (use-package prettier-js
-;;   :ensure t
-;;   :config
-;;   (setq prettier-js-args
-;;         '(
-;;           "--no-semi" 
-;;           "--single-quote" 
-;;           "--jsx-single-quote" 
-;;           ;; "--trailing-comma" "es5"
-;;           "--trailing-comma" "none"
-;;           ;; "--no-bracket-spasing" 
 
-;;           ))
-;;   :hook
-;;   (js-mode . prettier-js-mode)
-;;   (web-mode . prettier-js-mode)
-;;   )
 
 (provide 'edit)
-;; edit.el ends here
+;;; edit.el ends here
