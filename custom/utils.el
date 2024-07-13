@@ -30,7 +30,7 @@
 
 (defalias 'ig40in-new-line-above
   (kmacro "C-p C-e <return>"))
-(global-set-key (kbd "C-O") 'ig40in-new-line-above)
+(global-set-key (kbd "C-M-o") 'ig40in-new-line-above)
 
 ;; Move current line up or down
 ;; by Boxhidar Batsov
