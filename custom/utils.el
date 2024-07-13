@@ -28,7 +28,9 @@
    (kmacro "C-e <return>"))
 (global-set-key (kbd "C-o") 'ig40in-new-line-below)
 
-
+(defalias 'ig40in-new-line-above
+  (kmacro "C-p C-e <return>"))
+(global-set-key (kbd "C-O") 'ig40in-new-line-above)
 
 ;; Move current line up or down
 ;; by Boxhidar Batsov
