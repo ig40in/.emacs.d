@@ -29,9 +29,9 @@
 ;; (define-key global-map [remap execute-extended-command] #'helm-M-x)
 ;; (define-key global-map [remap switch-to-buffer] #'helm-mini)
 
-;; (use-package paredit
-;;   :ensure t
-;;   :hook (prog-mode . paredit-mode))
+(use-package paredit
+  :ensure t
+  :hook (prog-mode . paredit-mode))
 
 
 
