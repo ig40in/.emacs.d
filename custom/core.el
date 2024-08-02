@@ -2,11 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package doom-themes
-  :ensure t)
+;; (use-package doom-themes
+;;   :ensure t)
 
 (use-package zenburn-theme
   :ensure t)
+
+(use-package nano-theme
+  :ensure t)
+
 
 (use-package emacs
   :ensure nil
@@ -18,22 +22,24 @@
   ;; no menu
   (menu-bar-mode -1)
   ;; no stroll bar
-  (scroll-bar-mode -1)
+ (scroll-bar-mode -1)
   ;; turn off error bell notification
   (setq ring-bell-function 'ignore)
   ;; display line & column numbers in status line
   (setq column-number-mode t)
   ;; set relative line numbers mode
-  (setq display-line-numbers-type 'visual)
-  ;; highlight current line
-  (global-hl-line-mode t)
+ (setq display-line-numbers-type 'visual)
+
+ ;; highlight current line
+ (global-hl-line-mode t)
   ;; set default font / size
   ;; (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
   ;; (set-face-attribute 'default nil :font "Robotomono Nerd Font Mono" :height 140)
   ;; ;; set color
   ;; (load-theme 'zenburn)
   (load-theme 'modus-operandi)
-  ;; (load-theme 'doom-nord)
+  ;; (load-theme 'nano-dark)
+  ;; (load-theme 'nano-light)
   
   (setq default-frame-alist
         (append (list '(height . 108) '(width . 250)
@@ -45,6 +51,7 @@
   ;; avoid making backup files - we do have git!
   (setq make-backup-files nil)
   (setq create-lockfiles nil)
+  (setq auto-save-default nil)
   (setq gc-cons-threshold (* 1000 1024 1024)
 		    read-process-output-max (* 1024 1024)
 		    create-lockfiles nil) ;; lock files will kill `npm start'
@@ -54,19 +61,22 @@
   (setq-default tab-always-indent 'complete)
   (setq-default tab-width 2)
   (setq-default indent-tabs-mode nil)
-  (setq-default js-indent-level 2)  
+  (setq-default js-indent-level 2)
+  (setq-default major-mode 'text-mode)
   :config
   ;; use y-or-n instead yes-or-not
   (setopt use-short-ansewrs t)
   :hook
-  (prog-mode . display-line-numbers-mode))
+  (prog-mode . display-line-numbers-mode)
+  (text-mode . 'turn-on-auto-fill))
+
 
 ;; normally the PATH in nixos contains everything we'd like (e.g. rg, direnv),
 ;; but on mac that's not true, so load the PATH that the shell would have and
 ;; rely on bash/zsh/fishrc
 (use-package exec-path-from-shell
   :ensure t
-  ;; :if is-mac
+  :if (eq system-type 'darwin)
   :init
   (exec-path-from-shell-initialize))
 

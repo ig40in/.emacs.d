@@ -24,6 +24,7 @@
 (require 'edit)
 ;; (require 'sm-parens)
 (require 'orgm)
+(require 'org-gtd)
 (require 'prog)
 
 (provide 'init)
