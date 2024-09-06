@@ -55,9 +55,11 @@
 (use-package company
   :ensure t
   :hook (prog-mode . company-mode)
+  ;; :hook (prog-mode . company-tng-mode)
   :config
   (setq	company-idle-delay 0.0
-	      company-minimum-prefix-length 1))
+	      company-minimum-prefix-length 1)
+  (setq eglot-ignored-server-capabilities '(:inlayHintProvider)))
 
 
 

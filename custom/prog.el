@@ -5,6 +5,12 @@
 ;;; Code:
 
 ;;; === Tree-Sitter ===
+(use-package tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
 ;; `M-x combobulate' (default: `C-c o o') to start using Combobulate
 ;; (use-package treesit
 ;;   :mode (("\\.tsx\\'" . tsx-ts-mode))
@@ -256,8 +262,20 @@
   ;;   (setq geiser-guile-binary "guile3")))
   )
 
+;;; === Rust ===
+(use-package rust-mode
+  :init
+  (setq rust-mode-treesitter-derive t)
+  :config
+  (setq rust-format-on-save t)
+  (setq indent-tabs-mode nil))
 
+(add-hook 'rust-mode-hook 'eglot-ensure)
 
+(use-package flycheck-rust
+  :ensure t)
+(with-eval-after-load 'rust-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'prog)
 ;;; prog.el ends here

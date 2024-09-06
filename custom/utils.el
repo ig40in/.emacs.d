@@ -25,7 +25,8 @@
   (kmacro "C-x 2 C-2 C-0 C-x ^ M-o M-x m u l t <tab> v <tab> <return> M-o C-x 3"))
 
 (defalias 'ig40in-new-line-below
-   (kmacro "C-e <return>"))
+   ;; (kmacro "C-e <return>")
+   (kmacro "C-e C-j <tab>"))
 (global-set-key (kbd "C-o") 'ig40in-new-line-below)
 
 (defalias 'ig40in-new-line-above

@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (use-package doom-themes
-;;   :ensure t)
+(use-package doom-themes
+  :ensure t)
 
 (use-package zenburn-theme
   :ensure t)
@@ -37,16 +37,16 @@
   ;; (set-face-attribute 'default nil :font "Robotomono Nerd Font Mono" :height 140)
   ;; ;; set color
   ;; (load-theme 'zenburn)
-  (load-theme 'modus-operandi)
-  ;; (load-theme 'nano-dark)
-  ;; (load-theme 'nano-light)
+ (load-theme 'modus-operandi)
+ ;; (load-theme 'nano-dark)
+ ;; (load-theme 'nano-light)
   
-  (setq default-frame-alist
-        (append (list '(height . 108) '(width . 100) ;;'(width . 250)
-                      '(top . 0) '(left . 1814)
-                      '(vertical-scroll-bar . nil)
-                      '(font . "Robotomono Nerd Font Mono 14")
-                      )))
+ (setq default-frame-alist
+       (append (list '(height . 108) '(width . 250) ;;'(width . 250)
+                     '(top . 0) '(left . 1814)
+                     '(vertical-scroll-bar . nil)
+                     '(font . "Robotomono Nerd Font Mono 14")
+                     )))
   
   ;; avoid making backup files - we do have git!
   (setq make-backup-files nil)
@@ -68,6 +68,7 @@
   (setopt use-short-ansewrs t)
   :hook
   (prog-mode . display-line-numbers-mode)
+  (prog-mode . electric-indent-mode)
   (text-mode . 'turn-on-auto-fill))
 
 
