@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; packages.el --- setup packages repositories -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (require 'package)
 ;; set of repositories
@@ -18,5 +20,4 @@
   (package-refresh-contents))
 
 (provide 'packages)
-;; packages.el ends here
-
+;;; packages.el ends here

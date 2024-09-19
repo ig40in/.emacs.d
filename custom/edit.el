@@ -25,9 +25,9 @@
   :ensure t
   :hook (grep-mode . wgrep-setup))
 
-(use-package yasnippet
-  :ensure t
-  :config (yas-global-mode))
+;; (use-package yasnippet
+;;   :ensure t
+;;   :config (yas-global-mode))
 
 (use-package hydra
   :ensure t)

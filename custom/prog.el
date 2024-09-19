@@ -97,6 +97,9 @@
   (add-to-list 'flycheck-checkers 'javascript-eslint)
   (global-flycheck-mode))
 
+(use-package flycheck-eglot
+  :ensure t)
+
 ;; (use-package apheleia
 ;;   :ensure t
 ;;   :config
@@ -276,6 +279,18 @@
   :ensure t)
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(add-to-list 'eglot-server-programs
+             '((rust-ts-mode rust-mode) .
+               ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+
+;;; === Zig ===
+(use-package zig-mode
+  :ensure t
+  ;; :hook
+  ;; (prog-mode . zig-mode)
+  :config
+  (setq indent-tabs-mode nil)
+  (setq electric-pair-mode t))
 
 (provide 'prog)
 ;;; prog.el ends here
