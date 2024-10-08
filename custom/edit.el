@@ -52,15 +52,72 @@
 ;; (define-key global-map [remap execute-extended-command] #'helm-M-x)
 ;; (define-key global-map [remap switch-to-buffer] #'helm-mini)
 
-(use-package company
-  :ensure t
-  :hook (prog-mode . company-mode)
-  ;; :hook (prog-mode . company-tng-mode)
-  :config
-  (setq	company-idle-delay 0.0
-	      company-minimum-prefix-length 1)
-  (setq eglot-ignored-server-capabilities '(:inlayHintProvider)))
+;; (use-package company
+;;   :ensure t
+;;   :hook (prog-mode . company-mode)
+;;   ;; :hook (prog-mode . company-tng-mode)
+;;   :config
+;;   (setq	company-idle-delay 0.0
+;; 	      company-minimum-prefix-length 1)
+;;   (setq eglot-ignored-server-capabilities '(:inlayHintProvider)))
 
+;; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+;; inline errors
+
+(use-package flycheck :ensure)
+
+
+;; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+;; auto-completion and code snippets
+
+(use-package yasnippet
+  :ensure
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'text-mode-hook 'yas-minor-mode))
+
+(use-package company
+  :ensure
+  :config
+  (setq	company-idle-delay 0.2
+	      company-minimum-prefix-length 1)
+  :bind
+  (:map company-active-map
+              ("C-n". company-select-next)
+              ("C-p". company-select-previous)
+              ("M-<". company-select-first)
+              ("M->". company-select-last))
+  (:map company-mode-map
+        ("<tab>". tab-indent-or-complete)
+        ("TAB". tab-indent-or-complete)))
+
+(defun company-yasnippet-or-completion ()
+  (interactive)
+  (or (do-yas-expand)
+      (company-complete-common)))
+
+(defun check-expansion ()
+  (save-excursion
+    (if (looking-at "\\_>") t
+      (backward-char 1)
+      (if (looking-at "\\.") t
+        (backward-char 1)
+        (if (looking-at "::") t nil)))))
+
+(defun do-yas-expand ()
+  (let ((yas/fallback-behavior 'return-nil))
+    (yas/expand)))
+
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (if (or (not yas/minor-mode)
+            (null (do-yas-expand)))
+        (if (check-expansion)
+            (company-complete-common)
+          (indent-for-tab-command)))))
 
 
 ;; (use-package project

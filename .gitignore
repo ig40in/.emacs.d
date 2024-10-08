@@ -21,3 +21,4 @@ tree-sitter/
 .org-id-locations
 .DS_Store
 bookmarks
+rust-playground/

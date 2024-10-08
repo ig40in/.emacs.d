@@ -85,20 +85,20 @@
 ;;       :load-path ("path-to-git-checkout-of-combobulate")))
 
 ;;; === LSP ===
-(use-package eglot
-  :config
-  (setq eglot-autoshutdown t
-        eglot-confirm-server-initiated-edits nil))
+;; (use-package eglot
+;;   :config
+;;   (setq eglot-autoshutdown t
+;;         eglot-confirm-server-initiated-edits nil))
 
 ;;; === Checkers & Formatters ===
-(use-package flycheck
-  :ensure t
-  :config
-  (add-to-list 'flycheck-checkers 'javascript-eslint)
-  (global-flycheck-mode))
+;; (use-package flycheck
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'flycheck-checkers 'javascript-eslint)
+;;   (global-flycheck-mode))
 
-(use-package flycheck-eglot
-  :ensure t)
+;; (use-package flycheck-eglot
+;;   :ensure t)
 
 ;; (use-package apheleia
 ;;   :ensure t
@@ -266,22 +266,22 @@
   )
 
 ;;; === Rust ===
-(use-package rust-mode
-  :init
-  (setq rust-mode-treesitter-derive t)
-  :config
-  (setq rust-format-on-save t)
-  (setq indent-tabs-mode nil))
+;; (use-package rust-mode
+;;   :init
+;;   (setq rust-mode-treesitter-derive t)
+;;   :config
+;;   (setq rust-format-on-save t)
+;;   (setq indent-tabs-mode nil))
 
-(add-hook 'rust-mode-hook 'eglot-ensure)
+;; (add-hook 'rust-mode-hook 'eglot-ensure)
 
-(use-package flycheck-rust
-  :ensure t)
-(with-eval-after-load 'rust-mode
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-(add-to-list 'eglot-server-programs
-             '((rust-ts-mode rust-mode) .
-               ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+;; (use-package flycheck-rust
+;;   :ensure t)
+;; (with-eval-after-load 'rust-mode
+;;   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+;; (add-to-list 'eglot-server-programs
+;;              '((rust-ts-mode rust-mode) .
+;;                ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
 
 ;;; === Zig ===
 (use-package zig-mode
