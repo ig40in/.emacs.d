@@ -5,11 +5,11 @@
 ;;; Code:
 
 ;;; === Tree-Sitter ===
-(use-package tree-sitter
-  :config
-  (require 'tree-sitter-langs)
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; (use-package tree-sitter
+;;   :config
+;;   (require 'tree-sitter-langs)
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 ;; `M-x combobulate' (default: `C-c o o') to start using Combobulate
 ;; (use-package treesit

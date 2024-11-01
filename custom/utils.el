@@ -17,16 +17,22 @@
 (global-set-key (kbd "M-o") 'other-window)
 ;;(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; (global-set-key (kbd "<return>") 'newline-and-indent)
+
 (defalias 'kill-current-word
-     (kmacro "M-b C-SPC M-f C-w"))
+  (kmacro "M-b C-SPC M-f C-w"))
 (global-set-key (kbd "M-<f8>")   'kill-current-word)
 
 (defalias 'ig40in-dev-layout
   (kmacro "C-x 2 C-2 C-0 C-x ^ M-o M-x m u l t <tab> v <tab> <return> M-o C-x 3"))
 
-(defalias 'ig40in-new-line-below
-   ;; (kmacro "C-e <return>")
-   (kmacro "C-e C-j <tab>"))
+;; (defalias 'ig40in-new-line-below
+(defun ig40in-new-line-below ()
+;; (kmacro "C-e <return>"))
+;; (kmacro "C-e C-j <tab>"))
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
 (global-set-key (kbd "C-o") 'ig40in-new-line-below)
 
 (defalias 'ig40in-new-line-above
