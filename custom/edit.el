@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package evil
+  :ensure t)
+
 (use-package flyspell
   :ensure t
   :when (or (executable-find "ispell")

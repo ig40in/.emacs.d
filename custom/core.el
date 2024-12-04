@@ -42,10 +42,10 @@
  ;; (load-theme 'nano-light)
   
  (setq default-frame-alist
-       (append (list '(height . 90) '(width . 200) ;;'(width . 250)
+       (append (list '(height . 90) '(width . 110) ;; '(width . 220) ;;'(width . 250)
                      '(top . 0) '(left . 1814)
                      '(vertical-scroll-bar . nil)
-                     '(font . "Robotomono Nerd Font Mono 13")
+                     '(font . "Robotomono Nerd Font Mono 14")
                      )))
   
   ;; avoid making backup files - we do have git!
