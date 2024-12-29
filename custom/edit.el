@@ -4,6 +4,7 @@
 
 (use-package evil
   :ensure t)
+(evil-mode 1)
 
 (use-package flyspell
   :ensure t
